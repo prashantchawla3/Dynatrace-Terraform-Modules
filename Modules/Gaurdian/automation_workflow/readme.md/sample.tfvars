@@ -26,6 +26,7 @@ workflow_tasks = [
 
 workflow_trigger = {
   active     = true
-  event_type = "guardian.validation.objective"  # This is the Guardian validation event type.
-  query      = "guardian.id == \"${module.site_reliability_guardian.guardian_id}\""
+  event_type = "guardian.validation.finished"
+  query      = "parsed_execution_context.result == \"FAILED\""
 }
+
