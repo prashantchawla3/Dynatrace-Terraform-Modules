@@ -1,16 +1,78 @@
+variable "environment_url" {
+  description = "The base URL of the Dynatrace environment"
+  type        = string
+  default     = ""
+}
 
-variable "environment_url" { type = string }
-variable "dynatrace_client_id" { type = string }
-variable "dynatrace_client_secret" { type = string, sensitive = true }
+variable "dynatrace_client_id" {
+  description = "Client ID for Dynatrace API authentication"
+  type        = string
+  default     = ""
+}
 
-variable "auto_update" { description = "Enable ActiveGate auto update"; type = bool }
-variable "scope_activegate" { description = "Scope for ActiveGate updates"; type = string }
-variable "scope_oneagent" { description = "Scope for OneAgent updates"; type = string }
-variable "target_version" { description = "Target OneAgent version"; type = string }
-variable "update_mode" { description = "OneAgent update mode"; type = string }
+variable "dynatrace_client_secret" {
+  description = "Client secret for Dynatrace API authentication"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
 
-variable "name" { description = "Update window name"; type = string }
-variable "enabled" { description = "Enable update window"; type = bool }
-variable "recurrence" { description = "Recurrence type"; type = string }
-variable "once_recurrence_end" { description = "One-time window end"; type = string }
-variable "once_recurrence_start" { description = "One-time window start"; type = string }
+variable "auto_update" {
+  description = "Enable or disable auto-update for ActiveGate"
+  type        = bool
+  default     = false
+}
+
+variable "scope_activegate" {
+  description = "Scope selector for applying ActiveGate updates"
+  type        = string
+  default     = ""
+}
+
+variable "scope_oneagent" {
+  description = "Scope selector for applying OneAgent updates"
+  type        = string
+  default     = ""
+}
+
+variable "target_version" {
+  description = "Target OneAgent version to update to"
+  type        = string
+  default     = ""
+}
+
+variable "update_mode" {
+  description = "Update mode for OneAgent (e.g., 'auto', 'manual')"
+  type        = string
+  default     = ""
+}
+
+variable "name" {
+  description = "Name of the maintenance/update window"
+  type        = string
+  default     = ""
+}
+
+variable "enabled" {
+  description = "Enable or disable the update window"
+  type        = bool
+  default     = false
+}
+
+variable "recurrence" {
+  description = "Recurrence pattern for the update window (e.g., 'ONCE', 'WEEKLY')"
+  type        = string
+  default     = ""
+}
+
+variable "once_recurrence_end" {
+  description = "End timestamp for a one-time update window (RFC3339 format)"
+  type        = string
+  default     = ""
+}
+
+variable "once_recurrence_start" {
+  description = "Start timestamp for a one-time update window (RFC3339 format)"
+  type        = string
+  default     = ""
+}

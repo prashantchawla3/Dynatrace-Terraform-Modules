@@ -1,29 +1,28 @@
 variable "dashboards" {
-  description = "List of Dynatrace dashboards to be created"
+  description = "List of dashboards to be created"
   type = list(object({
+    dashboard_id    = string
     name            = string
     description     = string
-    dashboard_id    = string
     layout_type     = string
     sharing         = string
-    management_zone = string # Added management zone
-    widgets = list(object({
-      name      = string
-      type      = string
-      size      = string
-      position  = string
-      settings  = map(string)
+    management_zone = string
+    widgets         = list(object({
+      name     = string
+      type     = string
+      size     = string
+      position = string
+      settings = map(string)
     }))
   }))
 }
 
-variable "dynatrace_api_url" {
-  description = "Dynatrace API URL"
+variable "variables_type" {
+  description = "Type for variables in segments"
   type        = string
 }
 
-variable "dynatrace_api_token" {
-  description = "Dynatrace API Token"
+variable "variables_value" {
+  description = "Value for variables in segments"
   type        = string
-  sensitive   = true
 }

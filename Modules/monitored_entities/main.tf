@@ -1,4 +1,3 @@
-
 resource "dynatrace_custom_device" "custom_device" {
   custom_device_id = var.custom_device_id
   display_name     = var.display_name
@@ -9,24 +8,7 @@ resource "dynatrace_custom_device" "custom_device" {
   type             = var.type
   ui_based         = var.ui_based
 
-  dynamic "dns_names" {
-    for_each = var.dns_names
-    content {
-      value = dns_names.value
-    }
-  }
-
-  dynamic "ip_addresses" {
-    for_each = var.ip_addresses
-    content {
-      value = ip_addresses.value
-    }
-  }
-
-  dynamic "listen_ports" {
-    for_each = var.listen_ports
-    content {
-      value = listen_ports.value
-    }
-  }
+  dns_names     = var.enable_dns_names ? var.dns_names : []
+  ip_addresses  = var.enable_ip_addresses ? var.ip_addresses : []
+  listen_ports  = var.enable_listen_ports ? var.listen_ports : []
 }

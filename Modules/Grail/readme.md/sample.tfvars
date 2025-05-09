@@ -1,23 +1,43 @@
-api_url = "https://your-dynatrace-api-url"
-api_token = "your-dynatrace-api-token"
-
 segments = [
   {
-    name        = "K8s Cluster Segment"
-    description = "Segment for Kubernetes Cluster"
+    name        = "Segment 1"
+    description = "This is the first segment"
     is_public   = true
+
     includes = [
       {
-        data_object         = "dt.entity.kubernetes_cluster"
-        filter              = jsonencode({"children": [{"key": {"textValue": "k8s.cluster.name"}}]})
-        relationship_name   = "clustered_by"
-        relationship_target = "dt.entity.kubernetes_node"
-      },
+        data_object          = "object1"
+        filter               = "filter1"
+        relationship_name    = "relation1"
+        relationship_target  = "target1"
+      }
+    ]
+
+    variables = [
       {
-        data_object         = "dt.entity.host"
-        filter              = ""
-        relationship_name   = "belongs_to"
-        relationship_target = "dt.entity.kubernetes_cluster"
+        type  = "string"
+        value = "value1"
+      }
+    ]
+  },
+  {
+    name        = "Segment 2"
+    description = "This is the second segment"
+    is_public   = false
+
+    includes = [
+      {
+        data_object          = "object2"
+        filter               = "filter2"
+        relationship_name    = "relation2"
+        relationship_target  = "target2"
+      }
+    ]
+
+    variables = [
+      {
+        type  = "number"
+        value = "42"
       }
     ]
   }

@@ -1,10 +1,9 @@
-
-output "custom_device_entity_id" {
-  description = "The entity ID of the created custom device"
-  value       = dynatrace_custom_device.custom_device.entity_id
+output "custom_device_id" {
+  description = "The ID of the custom device"
+  value       = dynatrace_custom_device.custom_device.custom_device_id
 }
 
-output "custom_device_id" {
-  description = "The resource ID of the created custom device"
-  value       = dynatrace_custom_device.custom_device.id
+output "display_name" {
+  description = "Display name of the custom device"
+  value       = dynatrace_custom_device.custom_device.display_name
 }

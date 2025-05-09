@@ -1,8 +1,8 @@
 
-variable "environment_url" {
-  description = "Dynatrace environment URL"
-  type        = string
-}
+# variable "environment_url" {
+#   description = "Dynatrace environment URL"
+#   type        = string
+# }
 
 variable "dynatrace_client_id" {
   description = "OAuth client ID"

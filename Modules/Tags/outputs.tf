@@ -1,11 +1,10 @@
-output "autotag_id" {
-  value = dynatrace_autotag_v2.example.id
+
+output "autotag_name" {
+  value       = dynatrace_autotag.this.name
+  description = "Name of the created Dynatrace auto tag"
 }
 
-output "autotag_rules_id" {
-  value = dynatrace_autotag_rules.example.id
-}
-
-output "custom_tags_id" {
-  value = dynatrace_custom_tags.example.id
+output "custom_tags_selector" {
+  value       = dynatrace_custom_tags.this.entity_selector
+  description = "Entity selector for the custom tags"
 }

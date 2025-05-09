@@ -1,23 +1,22 @@
-output "container_builtin_rule_id" {
-  description = "ID of the built-in container monitoring rule"
-  value       = dynatrace_container_builtin_rule.container_rule.id
-  condition   = var.builtin_rule_enabled
+output "container_builtin_rule" {
+  description = "The output for the container builtin rule configuration"
+  value = dynatrace_container_builtin_rule.this
 }
 
-output "container_registry_id" {
-  description = "ID of the container registry"
-  value       = dynatrace_container_registry.container_registry.id
-  condition   = var.registry_enabled
+# Output for Container Registry Configuration
+output "container_registry_configuration" {
+  description = "The container registry configuration"
+  value = dynatrace_container_registry.this
 }
 
-output "container_rule_id" {
-  description = "ID of the container rule"
-  value       = dynatrace_container_rule.container_monitoring_rule.id
-  condition   = var.container_rule_enabled
+# Output for Container Rule
+output "container_rule_configuration" {
+  description = "The container rule configuration"
+  value = dynatrace_container_rule.this
 }
 
-output "container_technology_id" {
-  description = "ID of the container technology config"
-  value       = dynatrace_container_technology.container_technology.id
-  condition   = var.technology_enabled
+# Output for Container Technology Configuration
+output "container_technology_configuration" {
+  description = "The container technology configuration"
+  value = dynatrace_container_technology.this
 }

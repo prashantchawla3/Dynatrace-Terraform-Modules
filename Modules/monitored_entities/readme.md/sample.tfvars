@@ -1,12 +1,16 @@
+custom_device_id = "my-custom-device-001"
+display_name     = "My Custom Device"
+config_url       = "https://config.example.com"
+favicon_url      = "https://config.example.com/favicon.ico"
+group            = "my-device-group"
+props = "location=datacenter-1;role=monitor"
+type        = "custom_device"
+ui_based    = true
 
-custom_device_id = "customDeviceId"
-display_name     = "customDevicename"
-config_url       = "https://config.url"
-dns_names        = ["dns1.example.com", "dns2.example.com"]
-favicon_url      = "https://favicon.url/icon.png"
-group            = "customGroup"
-ip_addresses     = ["192.168.1.1", "192.168.1.2"]
-listen_ports     = [80, 443]
-props            = "key1=value1,key2=value2"
-type             = "customType"
-ui_based         = true
+dns_names   = ["custom.example.com", "backup.example.com"]
+ip_addresses = ["10.0.0.10", "10.0.0.11"]
+listen_ports = ["8080", "443"]
+
+enable_dns_names    = true
+enable_ip_addresses = true
+enable_listen_ports = true

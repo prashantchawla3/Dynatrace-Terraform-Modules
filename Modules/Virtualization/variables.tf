@@ -9,16 +9,3 @@ variable "vmware_configs" {
     filter    = string
   }))
 }
-
-variable "environment_url" {
-  type = string
-}
-
-variable "dynatrace_client_id" {
-  type = string
-}
-
-variable "dynatrace_client_secret" {
-  type      = string
-  sensitive = true
-}

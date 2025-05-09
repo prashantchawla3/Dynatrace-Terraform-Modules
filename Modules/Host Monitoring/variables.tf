@@ -75,12 +75,32 @@ variable "host_process_group_monitoring" {
 }
 
 variable "net_tracers" {
-  description = "List of network tracer configurations."
+  description = "List of net tracers"
   type = list(object({
     scope      = string
-    net_tracer = string
+    net_tracer = bool  # Ensure this is a boolean value
   }))
 }
+
+variable "os_services" {
+  description = "List of OS services"
+  type = list(object({
+    name                      = string
+    enabled                   = bool
+    alert_activation_duration = number  # Ensure this is a number
+    alerting                  = bool
+    monitoring                = bool
+    not_installed_alerting    = bool
+    scope                     = string
+    status_condition_linux    = string
+    system                    = string
+    condition                 = string
+    property                  = string
+    metadata_key              = string
+    metadata_value            = string
+  }))
+}
+
 
 variable "network_traffic" {
   description = "List of network traffic configurations."
@@ -89,25 +109,6 @@ variable "network_traffic" {
     ip_address  = string
     interface   = string
     os          = string
-  }))
-}
-
-variable "os_services" {
-  description = "List of OS service configurations."
-  type = list(object({
-    name                      = string
-    enabled                   = bool
-    alert_activation_duration = string
-    alerting                  = bool
-    monitoring                = bool
-    not_installed_alerting    = bool
-    scope                     = string
-    status_condition_linux    = string
-    system                    = string
-    condition                = string
-    property                 = string
-    metadata_key             = string
-    metadata_value           = string
   }))
 }
 

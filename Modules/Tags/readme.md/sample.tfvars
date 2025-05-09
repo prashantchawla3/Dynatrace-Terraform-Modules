@@ -1,61 +1,47 @@
-environment_url         = "https://your-env.live.dynatrace.com"
-dynatrace_client_id     = "your-client-id"
-dynatrace_client_secret = "your-client-secret"
+# ----- Auto Tag -----
+autotag_name = "public-network-request-tag"
 
-autotag_name = "example_tag"
+# ---- String Condition ----
+string_condition_negate         = false
+string_condition_operator       = "EQUALS"
+string_condition_value          = "Requests to public networks"
+string_condition_case_sensitive = true
+string_condition_key_attribute  = "SERVICE_DETECTED_NAME"
+string_condition_key_type       = "STATIC"
+
+# ---- Service Topology Condition ----
+service_topology_negate        = false
+service_topology_operator      = "EQUALS"
+service_topology_value         = "EXTERNAL_SERVICE"
+service_topology_key_attribute = "SERVICE_TOPOLOGY"
+service_topology_key_type      = "STATIC"
+
+# ---- Rule Attributes ----
+rules_enabled       = true
+rules_type          = "SERVICE"
+rules_value_format  = "{Service:EndpointPath}"
+rules_normalization = "LEAVE_TEXT_AS_IS"
+
+# ---- Custom Tags ----
 entity_selector = "entityId(\"HOST-123456789000000\")"
 
-autotag_rules = [
+custom_tags_filters = [
   {
-    type                        = "ME"
-    enabled                     = true
-    value_format                = "{ProcessGroup:Environment:keptn_stage}"
-    value_normalization         = "Leave text as-is"
-    entity_type                 = "SERVICE"
-    service_to_host_propagation = false
-    service_to_pgpropagation    = true
-    conditions = [
-      {
-        dynamic_key        = "keptn_stage"
-        dynamic_key_source = "ENVIRONMENT"
-        key                = "PROCESS_GROUP_CUSTOM_METADATA"
-        operator           = "EXISTS"
-      }
-    ]
+    context = "CONTEXTLESS"
+    key     = "KeyExampleA"
   },
   {
-    type                        = "ME"
-    enabled                     = true
-    value_format                = "prod"
-    value_normalization         = "Leave text as-is"
-    entity_type                 = "SYNTHETIC_TEST"
-    service_to_host_propagation = false
-    service_to_pgpropagation    = false
-    conditions = [
-      {
-        key                = "BROWSER_MONITOR_TAGS"
-        operator           = "TAG_KEY_EQUALS"
-        dynamic_key        = ""
-        dynamic_key_source = ""
-        tag                = "prod"
-      }
-    ]
-  }
-]
-
-autotag_selector_rules = [
+    context = "CONTEXTLESS"
+    key     = "KeyExampleA"
+    value   = "ValueExample1"
+  },
   {
-    type                = "SELECTOR"
-    enabled             = true
-    entity_selector     = "type(SERVICE),tag(sample)"
-    value_format        = "disabled"
-    value_normalization = "Leave text as-is"
+    context = "CONTEXTLESS"
+    key     = "KeyExampleB"
+  },
+  {
+    context = "CONTEXTLESS"
+    key     = "KeyExampleC"
+    value   = "ValueExample2"
   }
-]
-
-custom_tags = [
-  { context = "CONTEXTLESS", key = "KeyExampleA" },
-  { context = "CONTEXTLESS", key = "KeyExampleA", value = "ValueExample1" },
-  { context = "CONTEXTLESS", key = "KeyExampleB" },
-  { context = "CONTEXTLESS", key = "KeyExampleC", value = "ValueExample2" }
 ]

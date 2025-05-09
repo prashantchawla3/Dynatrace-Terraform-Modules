@@ -1,6 +1,5 @@
-
 variable "custom_device_id" {
-  description = "The unique ID of the custom device"
+  description = "ID for the custom device"
   type        = string
 }
 
@@ -10,46 +9,67 @@ variable "display_name" {
 }
 
 variable "config_url" {
-  description = "Configuration URL for the device"
+  description = "Configuration URL"
   type        = string
 }
 
-variable "dns_names" {
-  description = "DNS names of the device"
-  type        = list(string)
-}
-
 variable "favicon_url" {
-  description = "URL of the favicon to show for the custom device"
+  description = "Favicon URL"
   type        = string
 }
 
 variable "group" {
-  description = "Custom group the device belongs to"
+  description = "Group for the custom device"
   type        = string
 }
 
-variable "ip_addresses" {
-  description = "IP addresses of the device"
-  type        = list(string)
-}
-
-variable "listen_ports" {
-  description = "Ports the device listens on"
-  type        = list(number)
-}
-
 variable "props" {
-  description = "Custom properties in key=value format"
+  description = "Properties as a map"
   type        = string
 }
 
 variable "type" {
-  description = "Device type identifier"
+  description = "Type of the device"
   type        = string
 }
 
 variable "ui_based" {
-  description = "Whether the device was created via UI"
+  description = "Is UI-based"
   type        = bool
+}
+
+variable "dns_names" {
+  description = "List of DNS names"
+  type        = list(string)
+  default     = []
+}
+
+variable "ip_addresses" {
+  description = "List of IP addresses"
+  type        = list(string)
+  default     = []
+}
+
+variable "listen_ports" {
+  description = "List of listen ports"
+  type        = list(string)
+  default     = []
+}
+
+variable "enable_dns_names" {
+  description = "Toggle for dns_names"
+  type        = bool
+  default     = true
+}
+
+variable "enable_ip_addresses" {
+  description = "Toggle for ip_addresses"
+  type        = bool
+  default     = true
+}
+
+variable "enable_listen_ports" {
+  description = "Toggle for listen_ports"
+  type        = bool
+  default     = true
 }

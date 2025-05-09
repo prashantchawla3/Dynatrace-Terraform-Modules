@@ -1,6 +1,3 @@
-api_url  = "https://your-dynatrace-api-url"
-api_token = "your-dynatrace-api-token"
-
 aix_extensions = [
   {
     host_id             = "host1"
@@ -68,12 +65,6 @@ host_process_group_monitoring = [
   }
 ]
 
-net_tracers = [
-  {
-    scope      = "ALL"
-    net_tracer = "tracer1"
-  }
-]
 
 network_traffic = [
   {
@@ -84,23 +75,31 @@ network_traffic = [
   }
 ]
 
+net_tracers = [
+  {
+    scope      = "example_scope"
+    net_tracer = true  # Boolean value for net_tracer
+  }
+]
+
 os_services = [
   {
     name                      = "service1"
     enabled                   = true
-    alert_activation_duration = "5m"
+    alert_activation_duration = 10  # Number (duration in seconds)
     alerting                  = true
     monitoring                = true
-    not_installed_alerting    = true
-    scope                     = "ALL"
-    status_condition_linux    = "ACTIVE"
-    system                    = "Linux"
-    condition                = "ACTIVE"
-    property                 = "service_status"
-    metadata_key             = "service_version"
-    metadata_value           = "1.0.0"
+    not_installed_alerting    = false
+    scope                     = "service_scope"
+    status_condition_linux    = "active"
+    system                    = "linux"
+    condition                 = "condition1"
+    property                  = "property1"
+    metadata_key              = "key1"
+    metadata_value            = "value1"
   }
 ]
+
 
 host_naming_orders = [
   {
