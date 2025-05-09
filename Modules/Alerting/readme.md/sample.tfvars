@@ -1,27 +1,62 @@
-name = "Example Alerting Profile"
+name = "Test Alerting Profile"
 
 rules = [
   {
-    severity_level   = "ERRORS"
-    delay_in_minutes = 15
-    include_mode     = "INCLUDE_ANY"
-    tags             = ["Service:A", "Team:Dev"]
+    severity_level   = "CRITICAL"
+    delay_in_minutes = 5
+    include_mode     = "INCLUDE"
+    tags = [
+      {
+        key   = "Environment"
+        value = "Production"
+      },
+      {
+        key   = "Service"
+        value = "AppService"
+      }
+    ]
   },
   {
-    severity_level   = "PERFORMANCE"
-    delay_in_minutes = 30
-    include_mode     = "NONE"
+    severity_level   = "WARNING"
+    delay_in_minutes = 10
+    include_mode     = "EXCLUDE"
+    tags = [
+      {
+        key   = "Environment"
+        value = "Staging"
+      }
+    ]
   }
 ]
 
-maintenance_windows = {
-  mw1 = {
-    name             = "Weekly Maintenance"
-    maintenance_type = "PLANNED"
-    suppression      = "DETECT_PROBLEMS_DONT_ALERT"
-    schedule_type    = "WEEKLY"
-    start_time       = "02:00"
-    end_time         = "04:00"
-    time_zone        = "UTC"
+general_properties = {
+  name              = "Test Maintenance Window"
+  description       = "Scheduled maintenance for testing."
+  type              = "PLANNED"
+  disable_synthetic = true
+  suppression       = "DETECT_PROBLEMS_AND_ALERT"
+}
+
+maintenance = {
+  recurrence_type = "WEEKLY"
+
+  weekly_recurrence = {
+    day_of_week = "MONDAY"
+    recurrence_range = {
+      start_date = "2022-10-05"
+      end_date   = "2022-10-06"
+    }
+    time_window = {
+      start_time = "14:13:00"
+      end_time   = "15:13:00"
+      time_zone  = "UTC"
+    }
   }
+
+  filters = [
+    {
+      entity_type = "HOST"
+      entity_tags = ["KeyTest:ValueTest"]
+    }
+  ]
 }
